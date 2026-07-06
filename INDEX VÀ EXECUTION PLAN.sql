@@ -1,0 +1,25 @@
+CREATE INDEX idx_device_user
+ON DEVICE(userID);
+
+CREATE INDEX idx_server_room
+ON SERVER(serverRoomID);
+
+CREATE INDEX idx_service_server
+ON SERVICE(serverID);
+
+CREATE INDEX idx_permission_user
+ON SERVICE_PERMISSION(userID);
+
+SHOW INDEX FROM DEVICE;
+SHOW INDEX FROM SERVER;
+SHOW INDEX FROM SERVICE;
+SHOW INDEX FROM SERVICE_PERMISSION;
+
+EXPLAIN
+SELECT
+    u.firstName,
+    u.lastName,
+    d.deviceID
+FROM USER u
+JOIN DEVICE d
+ON u.userID = d.userID;
